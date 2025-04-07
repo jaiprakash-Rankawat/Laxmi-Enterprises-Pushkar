@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getProductById, getProductsByCategory } from "@/data/products";
@@ -6,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, ArrowRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import ProductList from "@/components/products/ProductList";
-import { useToast } from "@/components/ui/toast";
+import { useToast } from "@/hooks/use-toast";
 
 const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -32,7 +31,6 @@ const ProductDetail = () => {
     }
   };
   
-  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [productId]);
@@ -54,7 +52,6 @@ const ProductDetail = () => {
   return (
     <div className="bg-white py-10">
       <div className="container mx-auto px-4">
-        {/* Breadcrumb */}
         <div className="text-sm text-gray-500 mb-6">
           <Link to="/" className="hover:text-navy">Home</Link>
           <span className="mx-2">/</span>
@@ -67,9 +64,7 @@ const ProductDetail = () => {
           <span className="text-navy">{product.name}</span>
         </div>
         
-        {/* Product Info */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Image */}
           <div className="bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
             <img
               src={product.image}
@@ -78,7 +73,6 @@ const ProductDetail = () => {
             />
           </div>
           
-          {/* Details */}
           <div>
             <h1 className="text-3xl font-bold text-navy mb-2">{product.name}</h1>
             
@@ -140,7 +134,6 @@ const ProductDetail = () => {
           </div>
         </div>
         
-        {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="mt-16">
             <div className="flex justify-between items-center mb-6">

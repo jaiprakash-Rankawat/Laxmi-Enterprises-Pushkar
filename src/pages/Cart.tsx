@@ -1,10 +1,9 @@
-
 import { useCart } from "@/context/CartContext";
 import CartItem from "@/components/cart/CartItem";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ShoppingBag } from "lucide-react";
-import { useToast } from "@/components/ui/toast";
+import { useToast } from "@/hooks/use-toast";
 
 const Cart = () => {
   const { cart, updateQuantity, removeItem, clearCart } = useCart();

@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import { services } from "@/data/services";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/toast";
+import { useToast } from "@/hooks/use-toast";
 
 const Services = () => {
   const [service, setService] = useState<'painters' | 'plumbers'>('painters');

@@ -1,7 +1,6 @@
-
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 import { Product } from '../data/products';
-import { useToast } from '@/components/ui/toast';
+import { useToast } from '@/hooks/use-toast';
 
 export interface CartItem extends Product {
   quantity: number;
