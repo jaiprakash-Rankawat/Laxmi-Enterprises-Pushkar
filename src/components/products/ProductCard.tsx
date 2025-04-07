@@ -14,18 +14,18 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const { addItem } = useCart();
 
   return (
-    <div className="product-card group hover:border-blue-200 transition-all duration-300">
+    <div className="product-card group transition-all duration-300">
       <Link to={`/product/${product.id}`}>
         <div className="relative overflow-hidden">
-          <div className="h-48 md:h-64 bg-slate-50 flex items-center justify-center">
+          <div className="h-52 md:h-64 bg-slate-50 flex items-center justify-center">
             <img 
               src={product.image} 
               alt={product.name} 
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
           <div className="absolute top-3 right-3">
-            <Badge className="bg-blue-500 hover:bg-blue-600 text-xs font-medium uppercase tracking-wider">
+            <Badge className="bg-gradient-to-r from-navy to-lightblue hover:from-lightblue hover:to-teal text-xs font-medium uppercase tracking-wider">
               {product.category.replace("-", " ")}
             </Badge>
           </div>
@@ -34,28 +34,28 @@ const ProductCard = ({ product }: ProductCardProps) => {
       
       <div className="p-5">
         <Link to={`/product/${product.id}`}>
-          <h3 className="text-lg font-medium text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+          <h3 className="text-lg font-medium text-navy mb-2 line-clamp-2 group-hover:text-lightblue transition-colors">
             {product.name}
           </h3>
         </Link>
         
         <div className="flex justify-between items-center mb-4">
-          <span className="text-xl font-bold text-gray-800">₹{product.price.toFixed(2)}</span>
-          {product.originalPrice && product.originalPrice > product.price && (
-            <span className="text-sm text-gray-400 line-through">₹{product.originalPrice.toFixed(2)}</span>
+          <span className="text-xl font-bold text-navy">₹{product.price.toFixed(2)}</span>
+          {product.price > 100 && (
+            <span className="text-sm text-rose line-through">₹{(product.price * 1.2).toFixed(2)}</span>
           )}
         </div>
         
         <div className="flex gap-2">
           <Button 
             onClick={() => addItem(product)} 
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-full"
+            className="flex-1 bg-gradient-to-r from-navy to-lightblue hover:from-lightblue hover:to-navy text-white rounded-full shadow-soft"
           >
             <ShoppingCart size={16} className="mr-2" />
             Add to Cart
           </Button>
           <Link to={`/product/${product.id}`} className="inline-block">
-            <Button variant="outline" size="icon" className="rounded-full border-blue-200 hover:bg-blue-50">
+            <Button variant="outline" size="icon" className="rounded-full border-lightblue hover:bg-lightblue/10 text-navy hover:text-lightblue">
               <Eye size={16} />
             </Button>
           </Link>

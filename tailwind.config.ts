@@ -53,14 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Enhanced color scheme
-				navy: "#1E3A8A",
-				lightblue: "#3B82F6",
-				orange: "#F97316",
-				teal: "#14B8A6",
-				rose: "#F43F5E",
-				amber: "#F59E0B",
-				emerald: "#10B981",
+				// Enhanced vibrant color scheme
+				navy: "#0A2463",
+				lightblue: "#3E92CC",
+				orange: "#FF8600",
+				teal: "#1AC8ED",
+				rose: "#FF5A5F",
+				amber: "#FFB400",
+				emerald: "#21D19F",
+				coral: "#FF6B6B",
+				purple: "#845EC2",
+				magenta: "#D65DB1",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -87,7 +90,7 @@ export default {
 				'fade-in': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(10px)'
+						transform: 'translateY(20px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -103,17 +106,35 @@ export default {
 						transform: 'translateX(0)',
 						opacity: '1' 
 					}
+				},
+				'zoom-in': {
+					'0%': { 
+						transform: 'scale(0.95)',
+						opacity: '0' 
+					},
+					'100%': { 
+						transform: 'scale(1)',
+						opacity: '1' 
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.4s ease-out',
-				'slide-in': 'slide-in 0.5s ease-out'
+				'fade-in': 'fade-in 0.6s ease-out',
+				'slide-in': 'slide-in 0.5s ease-out',
+				'zoom-in': 'zoom-in 0.4s ease-out'
 			},
 			boxShadow: {
-				'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
-				'glow': '0 0 15px rgba(59, 130, 246, 0.5)'
+				'soft': '0 4px 20px rgba(0, 0, 0, 0.08)',
+				'glow': '0 0 15px rgba(62, 146, 204, 0.5)',
+				'card': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
+				'btn': '0 4px 10px rgba(0, 0, 0, 0.15)'
+			},
+			backgroundImage: {
+				'gradient-hero': 'linear-gradient(to right, rgba(10, 36, 99, 0.95), rgba(62, 146, 204, 0.9))',
+				'gradient-cta': 'linear-gradient(to right, #FF8600, #FFB400)',
+				'gradient-card': 'linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1))'
 			}
 		}
 	},

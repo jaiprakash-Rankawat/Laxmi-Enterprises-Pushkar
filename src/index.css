@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 221.2 83.2% 53.3%;
+    --primary: 215 85% 35%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -23,7 +23,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 24 98% 50%;
+    --accent: 35 100% 50%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -55,7 +55,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 24 98% 50%;
+    --accent: 35 100% 50%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -80,44 +80,88 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-navy via-lightblue to-teal bg-clip-text text-transparent;
   }
   
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
+  
+  .bg-blur {
+    backdrop-filter: blur(8px);
+  }
+  
+  .scale-hover {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
 }
 
 .product-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  @apply bg-white overflow-hidden rounded-xl border border-slate-200;
+  @apply bg-white overflow-hidden rounded-xl border border-slate-200 shadow-soft;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  @apply shadow-card border-blue-200;
 }
 
 .hero-gradient {
-  background: linear-gradient(to right, rgba(30, 58, 138, 0.95), rgba(37, 99, 235, 0.8));
+  background: linear-gradient(to right, rgba(10, 36, 99, 0.95), rgba(62, 146, 204, 0.9));
 }
 
 .section-padding {
-  @apply py-16 md:py-24;
+  @apply py-20 md:py-28;
 }
 
 .animate-on-scroll {
   @apply opacity-0;
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.8s ease forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Button styles */
+.btn-gradient {
+  @apply bg-gradient-to-r from-orange to-amber text-white font-medium rounded-full shadow-btn transition-all duration-300 hover:shadow-xl hover:translate-y-[-2px];
+}
+
+/* Card effects */
+.card-hover-effect {
+  @apply transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px];
+}
+
+/* Image animations */
+.img-zoom {
+  @apply transition-transform duration-500 hover:scale-110;
+}
+
+/* Custom section divider */
+.section-divider {
+  height: 5px;
+  @apply bg-gradient-to-r from-orange via-amber to-orange rounded-full w-20 mx-auto my-6;
+}
+
+/* Glass effect */
+.glass-effect {
+  @apply bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-20;
 }
