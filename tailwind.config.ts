@@ -53,10 +53,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Custom colors
-				navy: "#1A365D",
-				lightblue: "#4299E1",
-				orange: "#ED8936",
+				// Enhanced color scheme
+				navy: "#1E3A8A",
+				lightblue: "#3B82F6",
+				orange: "#F97316",
+				teal: "#14B8A6",
+				rose: "#F43F5E",
+				amber: "#F59E0B",
+				emerald: "#10B981",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -79,11 +83,37 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'slide-in': {
+					'0%': { 
+						transform: 'translateX(-100%)',
+						opacity: '0' 
+					},
+					'100%': { 
+						transform: 'translateX(0)',
+						opacity: '1' 
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.4s ease-out',
+				'slide-in': 'slide-in 0.5s ease-out'
+			},
+			boxShadow: {
+				'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+				'glow': '0 0 15px rgba(59, 130, 246, 0.5)'
 			}
 		}
 	},
