@@ -24,3 +24,11 @@ export const services: Service[] = [
 export const getServiceById = (id: string): Service | undefined => {
   return services.find(service => service.id === id);
 };
+
+// Shop information
+export const shopInfo = {
+  name: "Laxmi Enterprises Pushkar",
+  address: "Main Market Road, Pushkar, Rajasthan",
+  phone: "9876543200",
+  email: "laxmipushkar@example.com"
+};

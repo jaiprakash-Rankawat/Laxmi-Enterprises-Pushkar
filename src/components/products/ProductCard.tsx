@@ -14,7 +14,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const { addItem } = useCart();
 
   return (
-    <div className="product-card group transition-all duration-300">
+    <div className="product-card group transition-all duration-300 bg-white rounded-lg shadow-soft hover:shadow-md overflow-hidden">
       <Link to={`/product/${product.id}`}>
         <div className="relative overflow-hidden">
           <div className="h-52 md:h-64 bg-slate-50 flex items-center justify-center">
@@ -25,7 +25,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             />
           </div>
           <div className="absolute top-3 right-3">
-            <Badge className="bg-gradient-to-r from-navy to-lightblue hover:from-lightblue hover:to-teal text-xs font-medium uppercase tracking-wider">
+            <Badge className="bg-gradient-to-r from-navy to-lightblue hover:from-lightblue hover:to-teal text-white text-xs font-medium uppercase tracking-wider">
               {product.category.replace("-", " ")}
             </Badge>
           </div>
