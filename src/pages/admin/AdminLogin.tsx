@@ -1,16 +1,24 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { shopInfo } from "@/data/services";
+import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  useEffect(() => {
+    // Check if already logged in
+    if (localStorage.getItem("isAdminLoggedIn") === "true") {
+      navigate("/admin/dashboard");
+    }
+  }, [navigate]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +44,9 @@ const AdminLogin = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-navy to-lightblue p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-navy">{shopInfo.name}</h1>
+          <Link to="/" className="inline-block">
+            <h1 className="text-2xl font-bold text-navy">{shopInfo.name}</h1>
+          </Link>
           <p className="text-gray-600 mt-2">Admin Login</p>
         </div>
 
@@ -79,6 +89,12 @@ const AdminLogin = () => {
 
         <div className="mt-6 text-center text-sm text-gray-500">
           <p>Use username: "admin" and password: "admin123" for demo</p>
+        </div>
+        
+        <div className="mt-4 text-center">
+          <Link to="/" className="text-sm text-lightblue hover:underline">
+            Return to Home
+          </Link>
         </div>
       </div>
     </div>

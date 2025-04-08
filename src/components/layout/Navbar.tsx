@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,18 +21,15 @@ const Navbar = () => {
     <header className="bg-white shadow-soft sticky top-0 z-40">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <Link to="/" className="text-2xl font-bold flex items-center">
             <span className="bg-gradient-to-r from-navy via-lightblue to-teal bg-clip-text text-transparent">Paint</span>
             <span className="text-orange">&</span>
             <span className="bg-gradient-to-r from-teal via-emerald to-lightblue bg-clip-text text-transparent">Plumb</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 items-center">
             <Link to="/" className="text-navy hover:text-lightblue transition-colors font-medium">Home</Link>
             
-            {/* Categories Dropdown */}
             <div className="relative">
               <button 
                 onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
@@ -65,8 +61,8 @@ const Navbar = () => {
             
             <Link to="/services" className="text-navy hover:text-lightblue transition-colors font-medium">Services</Link>
             <Link to="/contact" className="text-navy hover:text-lightblue transition-colors font-medium">Contact</Link>
+            <Link to="/admin/login" className="text-navy hover:text-lightblue transition-colors font-medium">Admin</Link>
             
-            {/* Search button */}
             <Button 
               variant="ghost" 
               size="icon" 
@@ -76,7 +72,6 @@ const Navbar = () => {
               <Search className="h-5 w-5" />
             </Button>
             
-            {/* Cart button with item count */}
             <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative rounded-full hover:bg-blue-50 hover:text-lightblue text-navy">
                 <ShoppingCart className="h-5 w-5" />
@@ -89,7 +84,6 @@ const Navbar = () => {
             </Link>
           </nav>
 
-          {/* Mobile Navigation Button */}
           <div className="md:hidden flex items-center">
             <Button
               variant="ghost" 
@@ -114,7 +108,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 animate-fade-in">
           <div className="container mx-auto px-4 py-3">
@@ -147,13 +140,13 @@ const Navbar = () => {
               )}
               
               <Link to="/services" className="hover:text-lightblue text-navy transition-colors py-3 border-b border-gray-100" onClick={toggleMenu}>Services</Link>
-              <Link to="/contact" className="hover:text-lightblue text-navy transition-colors py-3" onClick={toggleMenu}>Contact</Link>
+              <Link to="/contact" className="hover:text-lightblue text-navy transition-colors py-3 border-b border-gray-100" onClick={toggleMenu}>Contact</Link>
+              <Link to="/admin/login" className="hover:text-lightblue text-navy transition-colors py-3" onClick={toggleMenu}>Admin</Link>
             </nav>
           </div>
         </div>
       )}
 
-      {/* Search Overlay */}
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );

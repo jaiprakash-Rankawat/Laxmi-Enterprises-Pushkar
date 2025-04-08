@@ -1,19 +1,20 @@
 
 import { useEffect } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Users, Wrench, Palette, Home, LogOut } from "lucide-react";
 import { shopInfo } from "@/data/services";
 
 const AdminLayout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
-    if (!isLoggedIn) {
+    if (!isLoggedIn && !location.pathname.includes("/admin/login")) {
       navigate("/admin/login");
     }
-  }, [navigate]);
+  }, [navigate, location]);
 
   const handleLogout = () => {
     localStorage.removeItem("isAdminLoggedIn");
