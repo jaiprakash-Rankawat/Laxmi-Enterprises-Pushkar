@@ -21,6 +21,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AdminPainters from "./pages/admin/AdminPainters";
 import AdminPlumbers from "./pages/admin/AdminPlumbers";
+import SearchResults from "./pages/SearchResults";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +65,7 @@ const App = () => {
                       <Route path="/products/:categoryId" element={<Products />} />
                       <Route path="/product/:productId" element={<ProductDetail />} />
                       <Route path="/services" element={<Services />} />
+                      <Route path="/search" element={<SearchResults />} />
                       <Route path="/cart" element={<Cart />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>

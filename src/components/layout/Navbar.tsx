@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { categories } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import SearchOverlay from "@/components/search/SearchOverlay";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { cart } = useCart();
 
   const toggleMenu = () => {
@@ -65,7 +67,12 @@ const Navbar = () => {
             <Link to="/contact" className="text-navy hover:text-lightblue transition-colors font-medium">Contact</Link>
             
             {/* Search button */}
-            <Button variant="ghost" size="icon" className="rounded-full hover:bg-blue-50 hover:text-lightblue text-navy">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="rounded-full hover:bg-blue-50 hover:text-lightblue text-navy"
+              onClick={() => setIsSearchOpen(true)}
+            >
               <Search className="h-5 w-5" />
             </Button>
             
@@ -84,6 +91,14 @@ const Navbar = () => {
 
           {/* Mobile Navigation Button */}
           <div className="md:hidden flex items-center">
+            <Button
+              variant="ghost" 
+              size="icon" 
+              className="hover:bg-blue-50 mr-2 rounded-full text-navy"
+              onClick={() => setIsSearchOpen(true)}
+            >
+              <Search className="h-5 w-5" />
+            </Button>
             <Link to="/cart" className="mr-4 relative">
               <ShoppingCart className="h-5 w-5 text-navy" />
               {cart.totalItems > 0 && (
@@ -137,6 +152,9 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      {/* Search Overlay */}
+      <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );
 };
