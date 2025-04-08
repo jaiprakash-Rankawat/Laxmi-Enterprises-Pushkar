@@ -28,7 +28,6 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }: CartItemProps) => {
           <Link to={`/product/${item.id}`}>
             <h3 className="text-navy font-medium line-clamp-2">{item.name}</h3>
           </Link>
-          <p className="text-sm text-gray-500 capitalize">{item.category.replace('-', ' ')}</p>
           <p className="text-orange font-bold mt-1">₹{item.price.toFixed(2)}</p>
         </div>
       </div>
