@@ -1,8 +1,13 @@
+
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 import { Product } from '../data/products';
 import { useToast } from '@/hooks/use-toast';
 
-export interface CartItem extends Product {
+export interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
   quantity: number;
 }
 
@@ -13,7 +18,7 @@ interface CartState {
 }
 
 type CartAction =
-  | { type: 'ADD_ITEM'; payload: Product }
+  | { type: 'ADD_ITEM'; payload: CartItem }
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
   | { type: 'CLEAR_CART' };
@@ -45,7 +50,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         const updatedItems = [...state.items];
         updatedItems[existingItemIndex] = {
           ...updatedItems[existingItemIndex],
-          quantity: updatedItems[existingItemIndex].quantity + 1,
+          quantity: updatedItems[existingItemIndex].quantity + action.payload.quantity,
         };
         
         const { totalItems, totalAmount } = calculateTotals(updatedItems);
@@ -57,8 +62,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         };
       } else {
         // Add new item
-        const newItem = { ...action.payload, quantity: 1 };
-        const updatedItems = [...state.items, newItem];
+        const updatedItems = [...state.items, action.payload];
         const { totalItems, totalAmount } = calculateTotals(updatedItems);
         
         return {
@@ -124,6 +128,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 interface CartContextType {
   cart: CartState;
+  addToCart: (item: CartItem) => void;
   addItem: (product: Product) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
@@ -136,8 +141,22 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [cart, dispatch] = useReducer(cartReducer, initialState);
   const { toast } = useToast();
 
+  const addToCart = (item: CartItem) => {
+    dispatch({ type: 'ADD_ITEM', payload: item });
+  };
+
   const addItem = (product: Product) => {
-    dispatch({ type: 'ADD_ITEM', payload: product });
+    dispatch({ 
+      type: 'ADD_ITEM', 
+      payload: {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1
+      } 
+    });
+    
     toast({
       title: 'Added to cart',
       description: `${product.name} has been added to your cart.`,
@@ -168,6 +187,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     <CartContext.Provider
       value={{
         cart,
+        addToCart,
         addItem,
         removeItem,
         updateQuantity,

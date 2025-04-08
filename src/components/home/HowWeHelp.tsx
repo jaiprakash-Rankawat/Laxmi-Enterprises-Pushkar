@@ -1,5 +1,5 @@
 
-import { Check, Paint, Wrench, Truck, HeadsetMic, PaintBucket } from "lucide-react";
+import { Check, Pin, Wrench, Truck, Headset, PaintBucket } from "lucide-react";
 
 const HowWeHelp = () => {
   return (
@@ -18,7 +18,7 @@ const HowWeHelp = () => {
           {/* Service 1 */}
           <div className="flex flex-col items-center text-center px-4 group">
             <div className="bg-blue-50 p-5 rounded-full mb-6 group-hover:bg-navy group-hover:text-white transition-colors duration-300">
-              <Paint size={32} className="text-navy group-hover:text-white transition-colors duration-300" />
+              <PaintBucket size={32} className="text-navy group-hover:text-white transition-colors duration-300" />
             </div>
             <h3 className="text-xl font-semibold text-navy mb-3">Premium Paint Selection</h3>
             <p className="text-gray-600">
@@ -68,7 +68,7 @@ const HowWeHelp = () => {
           {/* Service 3 */}
           <div className="flex flex-col items-center text-center px-4 group">
             <div className="bg-blue-50 p-5 rounded-full mb-6 group-hover:bg-navy group-hover:text-white transition-colors duration-300">
-              <HeadsetMic size={32} className="text-navy group-hover:text-white transition-colors duration-300" />
+              <Headset size={32} className="text-navy group-hover:text-white transition-colors duration-300" />
             </div>
             <h3 className="text-xl font-semibold text-navy mb-3">Expert Consultation</h3>
             <p className="text-gray-600">

@@ -7,6 +7,12 @@ export interface Product {
   image: string;
   description: string;
   featured?: boolean;
+  inStock?: boolean;
+  oldPrice?: number;
+  brand?: string;
+  sku?: string;
+  features?: string[];
+  specifications?: Record<string, string | number>;
 }
 
 export interface Category {
@@ -37,6 +43,22 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "High-quality emulsion paint from Asian Paints.",
     featured: true,
+    inStock: true,
+    oldPrice: 1500,
+    brand: "Asian Paints",
+    sku: "AP-PE-001",
+    features: [
+      "Superior coverage",
+      "Washable finish",
+      "Low VOC content",
+      "Long-lasting color retention"
+    ],
+    specifications: {
+      "Coverage": "90-100 sq ft/liter",
+      "Finish": "Matt",
+      "Drying Time": "2-3 hours",
+      "Recoat Time": "4-6 hours"
+    }
   },
   {
     id: "2",
@@ -46,6 +68,21 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "Weather-resistant exterior paint from JSW.",
     featured: true,
+    inStock: true,
+    brand: "JSW",
+    sku: "JSW-WP-002",
+    features: [
+      "Weather resistant",
+      "UV protection",
+      "Anti-algal properties",
+      "Water repellent"
+    ],
+    specifications: {
+      "Coverage": "80-90 sq ft/liter",
+      "Finish": "Satin",
+      "Drying Time": "3-4 hours",
+      "Recoat Time": "6-8 hours"
+    }
   },
   {
     id: "3",
@@ -55,6 +92,22 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "Premium interior paint from JK Maxx.",
     featured: false,
+    inStock: false,
+    oldPrice: 1100,
+    brand: "JK Maxx",
+    sku: "JKM-IP-003",
+    features: [
+      "Stain resistant",
+      "Easy to clean",
+      "Rich color",
+      "Smooth finish"
+    ],
+    specifications: {
+      "Coverage": "95-110 sq ft/liter",
+      "Finish": "Eggshell",
+      "Drying Time": "1-2 hours",
+      "Recoat Time": "4 hours"
+    }
   },
   {
     id: "4",
@@ -64,6 +117,21 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "Standard CPVC 1/2 inch pipe for plumbing.",
     featured: true,
+    inStock: true,
+    brand: "Astral",
+    sku: "CPVC-12-004",
+    features: [
+      "High temperature resistance",
+      "Lead-free",
+      "Corrosion resistant",
+      "Easy installation"
+    ],
+    specifications: {
+      "Length": "3 meters",
+      "Material": "CPVC",
+      "Pressure Rating": "15kg/cm²",
+      "Temperature Rating": "93°C"
+    }
   },
   {
     id: "5",
@@ -73,6 +141,21 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "UPVC elbow joint for water distribution systems.",
     featured: true,
+    inStock: true,
+    brand: "Finolex",
+    sku: "UPVC-EJ-005",
+    features: [
+      "Leakproof",
+      "Chemical resistant",
+      "UV stabilized",
+      "Durable construction"
+    ],
+    specifications: {
+      "Material": "UPVC",
+      "Size": "1 inch",
+      "Angle": "90 degrees",
+      "Pressure Rating": "10kg/cm²"
+    }
   },
   {
     id: "6",
@@ -82,6 +165,21 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "PVC connector for water tanks.",
     featured: false,
+    inStock: true,
+    brand: "Supreme",
+    sku: "PVC-WTC-006",
+    features: [
+      "Watertight seal",
+      "Easy to install",
+      "Compatible with standard tanks",
+      "Long-lasting performance"
+    ],
+    specifications: {
+      "Size": "1.5 inch",
+      "Material": "PVC",
+      "Type": "Threaded",
+      "Max Pressure": "8kg/cm²"
+    }
   },
   {
     id: "7",
@@ -91,6 +189,22 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "Premium chrome-plated shower head.",
     featured: true,
+    inStock: true,
+    oldPrice: 999,
+    brand: "Jaquar",
+    sku: "CPSH-007",
+    features: [
+      "Multiple spray patterns",
+      "Easy to clean nozzles",
+      "Anti-scale system",
+      "Water-saving design"
+    ],
+    specifications: {
+      "Material": "Chrome-plated brass",
+      "Spray Settings": "5",
+      "Flow Rate": "2.5 GPM",
+      "Connection": "Standard 1/2 inch"
+    }
   },
   {
     id: "8",
@@ -100,6 +214,22 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "Modern design ceramic western toilet.",
     featured: false,
+    inStock: true,
+    oldPrice: 5200,
+    brand: "Hindware",
+    sku: "CWT-008",
+    features: [
+      "Water-efficient flush",
+      "Stain-resistant ceramic",
+      "Comfortable height",
+      "Quiet closing seat"
+    ],
+    specifications: {
+      "Material": "Vitreous ceramic",
+      "Flush Type": "Dual flush",
+      "Water Consumption": "4/6 liters",
+      "Trap Way": "Glazed"
+    }
   },
   {
     id: "9",
@@ -109,6 +239,21 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "Galvanized iron tee joint for plumbing systems.",
     featured: false,
+    inStock: true,
+    brand: "Tata",
+    sku: "GITJ-009",
+    features: [
+      "Strong construction",
+      "Rust-resistant",
+      "Precision threading",
+      "Easy installation"
+    ],
+    specifications: {
+      "Size": "3/4 inch",
+      "Material": "Galvanized iron",
+      "Type": "Equal Tee",
+      "Weight": "0.25 kg"
+    }
   },
   {
     id: "10",
@@ -118,6 +263,22 @@ export const products: Product[] = [
     image: "/placeholder.svg",
     description: "Set of high-quality paint brushes.",
     featured: true,
+    inStock: true,
+    oldPrice: 450,
+    brand: "Coral",
+    sku: "PBS-010",
+    features: [
+      "Assorted sizes",
+      "Soft bristles",
+      "Ergonomic handles",
+      "Suitable for all paints"
+    ],
+    specifications: {
+      "Pieces": "5",
+      "Sizes": "1/2 to 4 inch",
+      "Bristle Material": "Nylon blend",
+      "Handle Material": "Wooden"
+    }
   },
 ];
 
