@@ -1,4 +1,3 @@
-
 export interface Product {
   id: string;
   name: string;
@@ -22,16 +21,32 @@ export interface Category {
 }
 
 export const categories: Category[] = [
-  { id: "asian-paints", name: "Asian Paints", image: "/placeholder.svg" },
-  { id: "jsw-paints", name: "JSW Paints", image: "/placeholder.svg" },
-  { id: "jk-maxx-paints", name: "JK Maxx Paints", image: "/placeholder.svg" },
-  { id: "cpvc-pipe", name: "CPVC Pipe and Fittings", image: "/placeholder.svg" },
-  { id: "upvc-pipe", name: "UPVC Pipe and Fittings", image: "/placeholder.svg" },
-  { id: "pvc-pipe", name: "PVC Pipe and Fittings", image: "/placeholder.svg" },
+  {
+    id: "asian-paints",
+    name: "Asian Paints",
+    image: "/ApexShyne.png",
+  },
+  { id: "jsw-paints", name: "JSW Paints", image: "/PixaSilk.png" },
+  {
+    id: "jk-maxx-paints",
+    name: "JK Maxx Paints",
+    image: "/NinjaExteriorEmulsion.png",
+  },
+  {
+    id: "cpvc-pipe",
+    name: "CPVC Pipe and Fittings",
+    image: "/CpvcPipeAndFittings.png",
+  },
+  {
+    id: "upvc-pipe",
+    name: "UPVC Pipe and Fittings",
+    image: "/UpvcPipeAndFittings.png",
+  },
+  { id: "pvc-pipe", name: "PVC Pipe and Fittings", image: "/pvc-pipe.png" },
   { id: "bath-fittings", name: "Bath Fittings", image: "/placeholder.svg" },
   { id: "sanitary-items", name: "Sanitary Items", image: "/placeholder.svg" },
   { id: "gi-fittings", name: "GI Fittings", image: "/placeholder.svg" },
-  { id: "extra-items", name: "Extra Items", image: "/placeholder.svg" },
+  { id: "extra-items", name: "Extra Items", image: "/JkWallPutty.png" },
 ];
 
 export const products: Product[] = [
@@ -51,14 +66,14 @@ export const products: Product[] = [
       "Superior coverage",
       "Washable finish",
       "Low VOC content",
-      "Long-lasting color retention"
+      "Long-lasting color retention",
     ],
     specifications: {
-      "Coverage": "90-100 sq ft/liter",
-      "Finish": "Matt",
+      Coverage: "90-100 sq ft/liter",
+      Finish: "Matt",
       "Drying Time": "2-3 hours",
-      "Recoat Time": "4-6 hours"
-    }
+      "Recoat Time": "4-6 hours",
+    },
   },
   {
     id: "2",
@@ -75,14 +90,14 @@ export const products: Product[] = [
       "Weather resistant",
       "UV protection",
       "Anti-algal properties",
-      "Water repellent"
+      "Water repellent",
     ],
     specifications: {
-      "Coverage": "80-90 sq ft/liter",
-      "Finish": "Satin",
+      Coverage: "80-90 sq ft/liter",
+      Finish: "Satin",
       "Drying Time": "3-4 hours",
-      "Recoat Time": "6-8 hours"
-    }
+      "Recoat Time": "6-8 hours",
+    },
   },
   {
     id: "3",
@@ -100,14 +115,14 @@ export const products: Product[] = [
       "Stain resistant",
       "Easy to clean",
       "Rich color",
-      "Smooth finish"
+      "Smooth finish",
     ],
     specifications: {
-      "Coverage": "95-110 sq ft/liter",
-      "Finish": "Eggshell",
+      Coverage: "95-110 sq ft/liter",
+      Finish: "Eggshell",
       "Drying Time": "1-2 hours",
-      "Recoat Time": "4 hours"
-    }
+      "Recoat Time": "4 hours",
+    },
   },
   {
     id: "4",
@@ -124,14 +139,14 @@ export const products: Product[] = [
       "High temperature resistance",
       "Lead-free",
       "Corrosion resistant",
-      "Easy installation"
+      "Easy installation",
     ],
     specifications: {
-      "Length": "3 meters",
-      "Material": "CPVC",
+      Length: "3 meters",
+      Material: "CPVC",
       "Pressure Rating": "15kg/cm²",
-      "Temperature Rating": "93°C"
-    }
+      "Temperature Rating": "93°C",
+    },
   },
   {
     id: "5",
@@ -148,14 +163,14 @@ export const products: Product[] = [
       "Leakproof",
       "Chemical resistant",
       "UV stabilized",
-      "Durable construction"
+      "Durable construction",
     ],
     specifications: {
-      "Material": "UPVC",
-      "Size": "1 inch",
-      "Angle": "90 degrees",
-      "Pressure Rating": "10kg/cm²"
-    }
+      Material: "UPVC",
+      Size: "1 inch",
+      Angle: "90 degrees",
+      "Pressure Rating": "10kg/cm²",
+    },
   },
   {
     id: "6",
@@ -172,14 +187,14 @@ export const products: Product[] = [
       "Watertight seal",
       "Easy to install",
       "Compatible with standard tanks",
-      "Long-lasting performance"
+      "Long-lasting performance",
     ],
     specifications: {
-      "Size": "1.5 inch",
-      "Material": "PVC",
-      "Type": "Threaded",
-      "Max Pressure": "8kg/cm²"
-    }
+      Size: "1.5 inch",
+      Material: "PVC",
+      Type: "Threaded",
+      "Max Pressure": "8kg/cm²",
+    },
   },
   {
     id: "7",
@@ -197,14 +212,14 @@ export const products: Product[] = [
       "Multiple spray patterns",
       "Easy to clean nozzles",
       "Anti-scale system",
-      "Water-saving design"
+      "Water-saving design",
     ],
     specifications: {
-      "Material": "Chrome-plated brass",
+      Material: "Chrome-plated brass",
       "Spray Settings": "5",
       "Flow Rate": "2.5 GPM",
-      "Connection": "Standard 1/2 inch"
-    }
+      Connection: "Standard 1/2 inch",
+    },
   },
   {
     id: "8",
@@ -222,14 +237,14 @@ export const products: Product[] = [
       "Water-efficient flush",
       "Stain-resistant ceramic",
       "Comfortable height",
-      "Quiet closing seat"
+      "Quiet closing seat",
     ],
     specifications: {
-      "Material": "Vitreous ceramic",
+      Material: "Vitreous ceramic",
       "Flush Type": "Dual flush",
       "Water Consumption": "4/6 liters",
-      "Trap Way": "Glazed"
-    }
+      "Trap Way": "Glazed",
+    },
   },
   {
     id: "9",
@@ -246,14 +261,14 @@ export const products: Product[] = [
       "Strong construction",
       "Rust-resistant",
       "Precision threading",
-      "Easy installation"
+      "Easy installation",
     ],
     specifications: {
-      "Size": "3/4 inch",
-      "Material": "Galvanized iron",
-      "Type": "Equal Tee",
-      "Weight": "0.25 kg"
-    }
+      Size: "3/4 inch",
+      Material: "Galvanized iron",
+      Type: "Equal Tee",
+      Weight: "0.25 kg",
+    },
   },
   {
     id: "10",
@@ -271,25 +286,25 @@ export const products: Product[] = [
       "Assorted sizes",
       "Soft bristles",
       "Ergonomic handles",
-      "Suitable for all paints"
+      "Suitable for all paints",
     ],
     specifications: {
-      "Pieces": "5",
-      "Sizes": "1/2 to 4 inch",
+      Pieces: "5",
+      Sizes: "1/2 to 4 inch",
       "Bristle Material": "Nylon blend",
-      "Handle Material": "Wooden"
-    }
+      "Handle Material": "Wooden",
+    },
   },
 ];
 
 export const getProductsByCategory = (categoryId: string): Product[] => {
-  return products.filter(product => product.category === categoryId);
+  return products.filter((product) => product.category === categoryId);
 };
 
 export const getFeaturedProducts = (): Product[] => {
-  return products.filter(product => product.featured);
+  return products.filter((product) => product.featured);
 };
 
 export const getProductById = (id: string): Product | undefined => {
-  return products.find(product => product.id === id);
+  return products.find((product) => product.id === id);
 };
