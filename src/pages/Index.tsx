@@ -6,6 +6,7 @@ import Services from "@/components/home/Services";
 import HowWeHelp from "@/components/home/HowWeHelp";
 import Testimonials from "@/components/home/Testimonials";
 import ProjectStart from "@/components/home/ProjectStart";
+import Categories from "@/components/home/Categories";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
@@ -19,6 +20,7 @@ const Index = () => {
   return (
     <div>
       <Hero />
+      <Categories />
       <HowWeHelp />
       <FeaturedProducts />
       <Services />
