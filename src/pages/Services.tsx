@@ -1,7 +1,12 @@
+
 import { useState } from "react";
 import { services } from "@/data/services";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { painters } from "@/data/painters";
+import { plumbers } from "@/data/plumbers";
+import { Phone, Star, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const [service, setService] = useState<'painters' | 'plumbers'>('painters');
@@ -40,6 +45,9 @@ const Services = () => {
     setMessage('');
   };
   
+  // Get the appropriate service professionals based on selected service
+  const serviceProfessionals = service === 'painters' ? painters : plumbers;
+  
   return (
     <div className="bg-gray-50 py-10">
       <div className="container mx-auto px-4">
@@ -75,9 +83,10 @@ const Services = () => {
             ))}
           </div>
           
-          <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
+          {/* Service Professionals Section */}
+          <div className="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12">
             <h2 className="text-2xl font-bold text-navy mb-6">
-              Request a {service === 'painters' ? 'Painter' : 'Plumber'}
+              Available {service === 'painters' ? 'Painters' : 'Plumbers'}
             </h2>
             
             <div className="mb-6">
@@ -104,6 +113,56 @@ const Services = () => {
                 </button>
               </div>
             </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {serviceProfessionals.map((professional) => (
+                <div key={professional.id} className="border rounded-lg overflow-hidden">
+                  <div className="flex">
+                    <div className="w-1/3 bg-gray-200">
+                      <img 
+                        src={professional.image} 
+                        alt={professional.name} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="w-2/3 p-4">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="font-bold text-navy">{professional.name}</h3>
+                        <div className="flex items-center bg-blue-50 px-2 py-0.5 rounded text-xs">
+                          <Star className="h-3 w-3 text-yellow-500 mr-1" />
+                          <span>Rank #{professional.rank}</span>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-1">{professional.specialization}</p>
+                      <div className="flex items-center text-sm text-gray-600 mb-3">
+                        <Clock className="h-4 w-4 mr-1" />
+                        <span>{professional.experience} years experience</span>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        <a href={`tel:${professional.phone}`}>
+                          <Button size="sm" className="bg-navy hover:bg-lightblue">
+                            <Phone className="h-4 w-4 mr-1" />
+                            Call
+                          </Button>
+                        </a>
+                        <Link to={`/services/${service}/${professional.id}`}>
+                          <Button size="sm" variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
+                            View Profile
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
+            <h2 className="text-2xl font-bold text-navy mb-6">
+              Request a {service === 'painters' ? 'Painter' : 'Plumber'}
+            </h2>
             
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

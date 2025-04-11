@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
 import Cart from "./pages/Cart";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -23,6 +24,7 @@ import AdminProducts from "./pages/admin/AdminProducts";
 import AdminPainters from "./pages/admin/AdminPainters";
 import AdminPlumbers from "./pages/admin/AdminPlumbers";
 import SearchResults from "./pages/SearchResults";
+import WhatsAppOrder from "./pages/WhatsAppOrder";
 
 const queryClient = new QueryClient();
 
@@ -67,8 +69,10 @@ const App = () => {
                         <Route path="/products/:categoryId" element={<Products />} />
                         <Route path="/product/:productId" element={<ProductDetail />} />
                         <Route path="/services" element={<Services />} />
+                        <Route path="/services/:serviceType/:serviceId" element={<ServiceDetail />} />
                         <Route path="/search" element={<SearchResults />} />
                         <Route path="/cart" element={<Cart />} />
+                        <Route path="/whatsapp-order" element={<WhatsAppOrder />} />
                         <Route path="*" element={<NotFound />} />
                       </Routes>
                     </main>
