@@ -16,7 +16,7 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {services.map((service) => (
-            <Link to={`/services/${service.type}s`} key={service.id}>
+            <Link to={`/services/${service.id}s`} key={service.id}>
               <ServiceCard service={service} />
             </Link>
           ))}
