@@ -55,12 +55,15 @@ const Products = () => {
         </div>
 
         {/* Categories Filter */}
-        <div className="mb-8 overflow-x-auto">
+        <div className="mb-8 overflow-x-auto bg-white p-4 rounded-lg shadow-sm border border-gray-100">
           <div className="flex space-x-2 pb-2">
             <Button
               variant={selectedCategory === undefined ? "default" : "outline"}
               onClick={showAllProducts}
-              className={selectedCategory === undefined ? "bg-navy" : ""}
+              className={selectedCategory === undefined 
+                ? "bg-navy text-white hover:bg-lightblue"
+                : "text-navy border-navy hover:bg-navy hover:text-white"
+              }
             >
               All Products
             </Button>
@@ -70,7 +73,9 @@ const Products = () => {
                 variant={selectedCategory === category.id ? "default" : "outline"}
                 onClick={() => handleCategoryChange(category.id)}
                 className={`whitespace-nowrap ${
-                  selectedCategory === category.id ? "bg-navy" : ""
+                  selectedCategory === category.id 
+                    ? "bg-navy text-white hover:bg-lightblue" 
+                    : "text-navy border-navy hover:bg-navy hover:text-white"
                 }`}
               >
                 {category.name}

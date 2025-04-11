@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -5,6 +6,7 @@ import { useState } from "react";
 import { categories } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import SearchOverlay from "@/components/search/SearchOverlay";
+import UserMenu from "./UserMenu";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,7 +67,7 @@ const Navbar = () => {
                       <Link
                         key={category.id}
                         to={`/products/${category.id}`}
-                        className="px-4 py-2 hover:bg-blue-50 rounded-md block text-white hover:text-white "
+                        className="px-4 py-2 hover:bg-blue-50 rounded-md block text-gray-700 hover:text-navy"
                         onClick={() => setIsCategoriesOpen(false)}
                       >
                         {category.name}
@@ -118,6 +120,8 @@ const Navbar = () => {
                 )}
               </Button>
             </Link>
+            
+            <UserMenu />
           </nav>
 
           <div className="md:hidden flex items-center">
@@ -154,12 +158,12 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 animate-fade-in">
+        <div className="md:hidden bg-gray-900 border-t border-gray-700 animate-fade-in">
           <div className="container mx-auto px-4 py-3">
             <nav className="flex flex-col space-y-3">
               <Link
                 to="/"
-                className="hover:text-white  text-white transition-colors py-3 border-b border-gray-100"
+                className="text-white py-3 border-b border-gray-700"
                 onClick={toggleMenu}
               >
                 Home
@@ -167,7 +171,7 @@ const Navbar = () => {
 
               <button
                 onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
-                className="hover:text-white  text-white transition-colors py-3 border-b border-gray-100 text-left flex justify-between items-center"
+                className="text-white py-3 border-b border-gray-700 text-left flex justify-between items-center"
               >
                 Products
                 <svg
@@ -188,12 +192,12 @@ const Navbar = () => {
               </button>
 
               {isCategoriesOpen && (
-                <div className="pl-4 space-y-2 bg-blue-50 p-4 rounded-lg animate-zoom-in">
+                <div className="pl-4 space-y-2 bg-gray-800 p-4 rounded-lg animate-zoom-in">
                   {categories.map((category) => (
                     <Link
                       key={category.id}
                       to={`/products/${category.id}`}
-                      className="block py-2 hover:text-white   text-white transition-colors"
+                      className="block py-2 text-white"
                       onClick={toggleMenu}
                     >
                       {category.name}
@@ -204,25 +208,28 @@ const Navbar = () => {
 
               <Link
                 to="/services"
-                className="hover:text-white  text-white transition-colors py-3 border-b border-gray-100"
+                className="text-white py-3 border-b border-gray-700"
                 onClick={toggleMenu}
               >
                 Services
               </Link>
               <Link
                 to="/contact"
-                className="hover:text-white  text-white transition-colors py-3 border-b border-gray-100"
+                className="text-white py-3 border-b border-gray-700"
                 onClick={toggleMenu}
               >
                 Contact
               </Link>
               <Link
                 to="/admin/login"
-                className="hover:text-white  text-white transition-colors py-3"
+                className="text-white py-3 border-b border-gray-700"
                 onClick={toggleMenu}
               >
                 Admin
               </Link>
+              <div className="py-3">
+                <UserMenu />
+              </div>
             </nav>
           </div>
         </div>

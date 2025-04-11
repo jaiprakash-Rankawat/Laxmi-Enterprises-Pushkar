@@ -13,6 +13,7 @@ import Cart from "./pages/Cart";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 import { useState } from "react";
 import CartSidebar from "./components/cart/CartSidebar";
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -30,54 +31,56 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CartProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              {/* Admin Routes */}
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin" element={<AdminLayout />}>
-                <Route path="dashboard" element={<Dashboard />} />
-                <Route path="products" element={<AdminProducts />} />
-                <Route path="painters" element={<AdminPainters />} />
-                <Route path="plumbers" element={<AdminPlumbers />} />
-              </Route>
-              
-              {/* Public Routes */}
-              <Route path="/" element={
-                <div className="flex flex-col min-h-screen">
-                  <Navbar />
-                  <main className="flex-1">
-                    <Index />
-                  </main>
-                  <Footer />
-                  <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-                </div>
-              } />
-              <Route path="*" element={
-                <div className="flex flex-col min-h-screen">
-                  <Navbar />
-                  <main className="flex-1">
-                    <Routes>
-                      <Route path="/products" element={<Products />} />
-                      <Route path="/products/:categoryId" element={<Products />} />
-                      <Route path="/product/:productId" element={<ProductDetail />} />
-                      <Route path="/services" element={<Services />} />
-                      <Route path="/search" element={<SearchResults />} />
-                      <Route path="/cart" element={<Cart />} />
-                      <Route path="*" element={<NotFound />} />
-                    </Routes>
-                  </main>
-                  <Footer />
-                  <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-                </div>
-              } />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                {/* Admin Routes */}
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route path="dashboard" element={<Dashboard />} />
+                  <Route path="products" element={<AdminProducts />} />
+                  <Route path="painters" element={<AdminPainters />} />
+                  <Route path="plumbers" element={<AdminPlumbers />} />
+                </Route>
+                
+                {/* Public Routes */}
+                <Route path="/" element={
+                  <div className="flex flex-col min-h-screen">
+                    <Navbar />
+                    <main className="flex-1">
+                      <Index />
+                    </main>
+                    <Footer />
+                    <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+                  </div>
+                } />
+                <Route path="*" element={
+                  <div className="flex flex-col min-h-screen">
+                    <Navbar />
+                    <main className="flex-1">
+                      <Routes>
+                        <Route path="/products" element={<Products />} />
+                        <Route path="/products/:categoryId" element={<Products />} />
+                        <Route path="/product/:productId" element={<ProductDetail />} />
+                        <Route path="/services" element={<Services />} />
+                        <Route path="/search" element={<SearchResults />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
+                    </main>
+                    <Footer />
+                    <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+                  </div>
+                } />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </CartProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 };

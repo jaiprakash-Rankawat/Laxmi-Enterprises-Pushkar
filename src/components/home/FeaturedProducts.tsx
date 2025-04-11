@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { getFeaturedProducts } from "@/data/products";
 import ProductCard from "../products/ProductCard";
