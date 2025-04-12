@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { 
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow 
@@ -93,7 +92,6 @@ const AdminReviews = () => {
     );
     
     setReviews(updatedReviews);
-    // Also update the global reviews array to ensure changes persist
     initialReviews.splice(0, initialReviews.length);
     updatedReviews.forEach(review => initialReviews.push(review));
     
@@ -111,7 +109,6 @@ const AdminReviews = () => {
     const filteredReviews = reviews.filter(review => review.id !== currentReview.id);
     setReviews(filteredReviews);
     
-    // Also update the global reviews array to ensure changes persist
     initialReviews.splice(0, initialReviews.length);
     filteredReviews.forEach(review => initialReviews.push(review));
     
@@ -201,7 +198,6 @@ const AdminReviews = () => {
         </Table>
       </div>
       
-      {/* Edit Review Dialog */}
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent className="sm:max-w-[550px]">
           <DialogHeader>
@@ -273,7 +269,6 @@ const AdminReviews = () => {
         </DialogContent>
       </Dialog>
       
-      {/* Add Review Dialog */}
       <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
         <DialogContent className="sm:max-w-[550px]">
           <DialogHeader>
@@ -307,7 +302,6 @@ const AdminReviews = () => {
               <Select 
                 value={newReview.entityId} 
                 onValueChange={(value) => setNewReview({...newReview, entityId: value})}
-                disabled={newReview.entityType === ""}
               >
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select Entity" />
@@ -392,7 +386,6 @@ const AdminReviews = () => {
         </DialogContent>
       </Dialog>
       
-      {/* Delete Confirmation Dialog */}
       <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
