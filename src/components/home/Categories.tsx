@@ -23,7 +23,7 @@ const Categories = () => {
               key={category.id}
               className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col group"
             >
-              <div className="p-4 flex-1 flex items-center justify-center">
+              <div className="p-4 flex-1 flex items-center justify-center bg-gray-50">
                 <img 
                   src={category.image} 
                   alt={category.name} 

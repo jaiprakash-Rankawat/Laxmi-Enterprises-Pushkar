@@ -10,6 +10,7 @@ import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
+import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -26,7 +27,14 @@ import AdminPlumbers from "./pages/admin/AdminPlumbers";
 import SearchResults from "./pages/SearchResults";
 import WhatsAppOrder from "./pages/WhatsAppOrder";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0, // Don't cache data between page loads
+      refetchOnWindowFocus: true, // Refresh data when page gains focus
+    },
+  },
+});
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -71,6 +79,7 @@ const App = () => {
                         <Route path="/services" element={<Services />} />
                         <Route path="/services/:serviceType/:serviceId" element={<ServiceDetail />} />
                         <Route path="/search" element={<SearchResults />} />
+                        <Route path="/contact" element={<Contact />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/whatsapp-order" element={<WhatsAppOrder />} />
                         <Route path="*" element={<NotFound />} />

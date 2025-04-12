@@ -4,9 +4,11 @@ import { getFeaturedProducts } from "@/data/products";
 import ProductCard from "../products/ProductCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const FeaturedProducts = () => {
   const featuredProducts = getFeaturedProducts();
+  const isMobile = useIsMobile();
 
   return (
     <div className="py-16 bg-white">
@@ -17,6 +19,7 @@ const FeaturedProducts = () => {
             <h2 className="text-3xl font-bold text-navy mt-2">
               High-Demand Products
             </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-navy to-lightblue rounded-full my-4"></div>
             <p className="mt-2 text-gray-600">
               Discover our most popular products
             </p>
@@ -32,8 +35,8 @@ const FeaturedProducts = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-          {featuredProducts.map((product) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+          {featuredProducts.slice(0, isMobile ? 4 : 8).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

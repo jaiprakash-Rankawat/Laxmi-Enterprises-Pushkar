@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { services } from "@/data/services";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -9,7 +10,14 @@ import { Phone, Star, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Services = () => {
-  const [service, setService] = useState<'painters' | 'plumbers'>('painters');
+  const [searchParams] = useSearchParams();
+  const typeFromUrl = searchParams.get('type');
+  
+  const [service, setService] = useState<'painters' | 'plumbers'>(
+    typeFromUrl === 'painters' || typeFromUrl === 'plumbers' 
+      ? typeFromUrl 
+      : 'painters'
+  );
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -17,6 +25,13 @@ const Services = () => {
   const [message, setMessage] = useState('');
   
   const { toast } = useToast();
+
+  // Update service state when URL parameter changes
+  useEffect(() => {
+    if (typeFromUrl === 'painters' || typeFromUrl === 'plumbers') {
+      setService(typeFromUrl);
+    }
+  }, [typeFromUrl]);
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,12 +76,12 @@ const Services = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {services.map((serviceItem) => (
-              <div key={serviceItem.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div key={serviceItem.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="h-48 overflow-hidden">
                   <img
                     src={serviceItem.image}
                     alt={serviceItem.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">
@@ -116,7 +131,7 @@ const Services = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {serviceProfessionals.map((professional) => (
-                <div key={professional.id} className="border rounded-lg overflow-hidden">
+                <div key={professional.id} className="border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                   <div className="flex">
                     <div className="w-1/3 bg-gray-200">
                       <img 
@@ -164,7 +179,7 @@ const Services = () => {
               Request a {service === 'painters' ? 'Painter' : 'Plumber'}
             </h2>
             
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-700 mb-2">Your Name*</label>
@@ -173,7 +188,7 @@ const Services = () => {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-navy"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
                   />
                 </div>
                 
@@ -184,7 +199,7 @@ const Services = () => {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-navy"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
                   />
                 </div>
                 
@@ -194,7 +209,7 @@ const Services = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-navy"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
                   />
                 </div>
                 
@@ -205,7 +220,7 @@ const Services = () => {
                     required
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-navy"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
                   />
                 </div>
                 
@@ -215,7 +230,7 @@ const Services = () => {
                     rows={4}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-navy"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
                     placeholder={`Please describe what ${service === 'painters' ? 'painting' : 'plumbing'} work you need...`}
                   ></textarea>
                 </div>
