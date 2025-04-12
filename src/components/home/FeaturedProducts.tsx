@@ -9,11 +9,12 @@ const FeaturedProducts = () => {
   const featuredProducts = getFeaturedProducts();
 
   return (
-    <div className="py-16 bg-gray-50">
+    <div className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="mb-10 flex flex-col md:flex-row justify-between items-center">
           <div>
-            <h2 className="text-3xl font-bold text-navy">
+            <span className="text-orange font-semibold uppercase tracking-wider bg-orange/10 px-3 py-1 rounded-full">Featured</span>
+            <h2 className="text-3xl font-bold text-navy mt-2">
               High-Demand Products
             </h2>
             <p className="mt-2 text-gray-600">
@@ -23,10 +24,10 @@ const FeaturedProducts = () => {
           <Link to="/products" className="mt-4 md:mt-0">
             <Button
               variant="outline"
-              className="text-navy border-navy hover:bg-navy hover:text-white flex items-center"
+              className="text-navy border-navy hover:bg-navy hover:text-white flex items-center group"
             >
               View All Products
-              <ArrowRight size={16} className="ml-2" />
+              <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </div>
