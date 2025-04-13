@@ -26,6 +26,7 @@ import AdminReviews from "./pages/admin/AdminReviews";
 // Components
 import { Toaster } from "./components/ui/toaster";
 import { CartProvider } from "./context/CartContext";
+import Layout from "./components/layout/Layout";
 
 function App() {
   return (
@@ -33,16 +34,18 @@ function App() {
       <CartProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/:productId" element={<ProductDetail />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/:serviceType" element={<Services />} />
-            <Route path="/services/:serviceType/:professionalId" element={<ServiceDetail />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/search" element={<SearchResults />} />
-            <Route path="/whatsapp-order" element={<WhatsAppOrder />} />
+            <Route element={<Layout />}>
+              <Route path="/" element={<Index />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/product/:productId" element={<ProductDetail />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/services/:serviceType" element={<Services />} />
+              <Route path="/services/:serviceType/:professionalId" element={<ServiceDetail />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/search" element={<SearchResults />} />
+              <Route path="/whatsapp-order" element={<WhatsAppOrder />} />
+            </Route>
             
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="login" element={<AdminLogin />} />
