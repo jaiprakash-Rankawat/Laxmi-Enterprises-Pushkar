@@ -14,7 +14,8 @@ const Products = () => {
   useEffect(() => {
     if (categoryId) {
       setSelectedCategory(categoryId);
-      setDisplayProducts(getProductsByCategory(categoryId));
+      const filteredProducts = getProductsByCategory(categoryId);
+      setDisplayProducts(filteredProducts.length ? filteredProducts : []);
       
       const category = categories.find(cat => cat.id === categoryId);
       setCurrentCategory(category?.name);
@@ -27,7 +28,8 @@ const Products = () => {
 
   const handleCategoryChange = (catId: string) => {
     setSelectedCategory(catId);
-    setDisplayProducts(getProductsByCategory(catId));
+    const filteredProducts = getProductsByCategory(catId);
+    setDisplayProducts(filteredProducts);
     
     const category = categories.find(cat => cat.id === catId);
     setCurrentCategory(category?.name);
