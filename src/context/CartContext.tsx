@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, ReactNode, useEffect } from 'react';
 import { Product } from '../data/products';
 import { useToast } from '@/hooks/use-toast';
 
@@ -21,13 +21,16 @@ type CartAction =
   | { type: 'ADD_ITEM'; payload: CartItem }
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
-  | { type: 'CLEAR_CART' };
+  | { type: 'CLEAR_CART' }
+  | { type: 'LOAD_CART'; payload: CartState };
 
 const initialState: CartState = {
   items: [],
   totalItems: 0,
   totalAmount: 0,
 };
+
+const CART_STORAGE_KEY = 'laxmi-enterprises-cart';
 
 const calculateTotals = (items: CartItem[]) => {
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
@@ -39,6 +42,8 @@ const calculateTotals = (items: CartItem[]) => {
 };
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
+  let newState: CartState;
+  
   switch (action.type) {
     case 'ADD_ITEM': {
       const existingItemIndex = state.items.findIndex(
@@ -54,7 +59,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         };
         
         const { totalItems, totalAmount } = calculateTotals(updatedItems);
-        return {
+        newState = {
           ...state,
           items: updatedItems,
           totalItems,
@@ -65,13 +70,14 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         const updatedItems = [...state.items, action.payload];
         const { totalItems, totalAmount } = calculateTotals(updatedItems);
         
-        return {
+        newState = {
           ...state,
           items: updatedItems,
           totalItems,
           totalAmount,
         };
       }
+      break;
     }
     
     case 'REMOVE_ITEM': {
@@ -80,12 +86,13 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       );
       const { totalItems, totalAmount } = calculateTotals(updatedItems);
       
-      return {
+      newState = {
         ...state,
         items: updatedItems,
         totalItems,
         totalAmount,
       };
+      break;
     }
     
     case 'UPDATE_QUANTITY': {
@@ -96,34 +103,44 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         const updatedItems = state.items.filter(item => item.id !== id);
         const { totalItems, totalAmount } = calculateTotals(updatedItems);
         
-        return {
+        newState = {
+          ...state,
+          items: updatedItems,
+          totalItems,
+          totalAmount,
+        };
+      } else {
+        const updatedItems = state.items.map(item =>
+          item.id === id ? { ...item, quantity } : item
+        );
+        
+        const { totalItems, totalAmount } = calculateTotals(updatedItems);
+        
+        newState = {
           ...state,
           items: updatedItems,
           totalItems,
           totalAmount,
         };
       }
-      
-      const updatedItems = state.items.map(item =>
-        item.id === id ? { ...item, quantity } : item
-      );
-      
-      const { totalItems, totalAmount } = calculateTotals(updatedItems);
-      
-      return {
-        ...state,
-        items: updatedItems,
-        totalItems,
-        totalAmount,
-      };
+      break;
     }
     
     case 'CLEAR_CART':
-      return initialState;
+      newState = initialState;
+      break;
+      
+    case 'LOAD_CART':
+      newState = action.payload;
+      break;
       
     default:
       return state;
   }
+  
+  // Save to localStorage
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(newState));
+  return newState;
 };
 
 interface CartContextType {
@@ -140,6 +157,19 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, initialState);
   const { toast } = useToast();
+
+  // Load cart from localStorage on initial render
+  useEffect(() => {
+    const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+    if (savedCart) {
+      try {
+        const parsedCart = JSON.parse(savedCart);
+        dispatch({ type: 'LOAD_CART', payload: parsedCart });
+      } catch (error) {
+        console.error('Failed to parse cart from localStorage', error);
+      }
+    }
+  }, []);
 
   const addToCart = (item: CartItem) => {
     dispatch({ type: 'ADD_ITEM', payload: item });
