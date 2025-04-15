@@ -3,6 +3,64 @@ import { Link } from "react-router-dom";
 import { categories } from "@/data/products";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { 
+  Box, 
+  ShoppingBag, 
+  PaintBucket, 
+  Pipette, 
+  Wrench, 
+  Shower, 
+  Droplet, 
+  CircleDashed,
+  Bath,
+  Hammer
+} from "lucide-react";
+
+// Map category IDs to appropriate icons
+const getCategoryIcon = (categoryId: string) => {
+  switch (categoryId) {
+    case "asian-paints":
+      return <PaintBucket size={48} />;
+    case "jsw-paints":
+      return <Pipette size={48} />;
+    case "jk-maxx-paints":
+      return <PaintBucket size={48} />;
+    case "cpvc-pipe":
+      return <Wrench size={48} />;
+    case "upvc-pipe":
+      return <Droplet size={48} />;
+    case "pvc-pipe":
+      return <Droplet size={48} />;
+    case "bath-fittings":
+      return <Shower size={48} />;
+    case "sanitary-items":
+      return <Bath size={48} />;
+    case "gi-fittings":
+      return <Hammer size={48} />;
+    case "extra-items":
+      return <ShoppingBag size={48} />;
+    default:
+      return <CircleDashed size={48} />;
+  }
+};
+
+// Generate gradient backgrounds based on category
+const getCategoryGradient = (index: number) => {
+  const gradients = [
+    "from-indigo-500 to-purple-500",
+    "from-purple-500 to-pink-500",
+    "from-pink-500 to-red-500",
+    "from-blue-500 to-cyan-500",
+    "from-cyan-500 to-teal-500",
+    "from-emerald-500 to-green-500",
+    "from-amber-500 to-orange-500",
+    "from-rose-500 to-red-500",
+    "from-sky-500 to-indigo-500",
+    "from-violet-500 to-indigo-500",
+  ];
+  
+  return gradients[index % gradients.length];
+};
 
 const Categories = () => {
   return (
@@ -68,17 +126,19 @@ const Categories = () => {
                 className="bg-white rounded-xl overflow-hidden transition-all duration-300 flex flex-col group h-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-gray-100 hover:shadow-[0_15px_30px_rgba(107,70,193,0.2)]"
               >
                 <motion.div 
-                  className="p-6 flex-1 flex items-center justify-center bg-gradient-to-b from-indigo-50 to-purple-50"
+                  className={`p-6 flex-1 flex items-center justify-center bg-gradient-to-br ${getCategoryGradient(index)} text-white`}
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <motion.img 
-                    src={category.image} 
-                    alt={category.name} 
-                    className="h-36 w-auto object-contain"
-                    whileHover={{ rotateZ: 5 }}
-                    transition={{ type: "spring", damping: 10 }}
-                  />
+                  <motion.div 
+                    className="bg-white/20 rounded-full p-6 backdrop-blur-sm"
+                    whileHover={{ 
+                      rotate: [0, -5, 5, -5, 0],
+                      transition: { duration: 0.5 }
+                    }}
+                  >
+                    {getCategoryIcon(category.id)}
+                  </motion.div>
                 </motion.div>
                 <div className="p-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center flex items-center justify-between">
                   <span className="text-sm font-medium">{category.name}</span>
