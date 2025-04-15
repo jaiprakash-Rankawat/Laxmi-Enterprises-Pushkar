@@ -36,12 +36,6 @@ const DesktopNavigation = ({ onSearchOpen }: DesktopNavigationProps) => {
       >
         Contact
       </Link>
-      <Link
-        to="/admin/login"
-        className="text-white hover:text-white transition-colors font-medium"
-      >
-        Admin
-      </Link>
 
       <Button
         variant="ghost"

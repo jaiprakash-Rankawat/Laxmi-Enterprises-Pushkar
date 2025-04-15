@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
-import { UserRound, LogOut } from "lucide-react";
+import { UserRound, LogOut, Settings } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import AuthDialog from "../auth/AuthDialog";
+import { Link } from "react-router-dom";
 
 const UserMenu = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -41,6 +42,12 @@ const UserMenu = () => {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
+          <DropdownMenuItem asChild>
+            <Link to="/admin/login">
+              <Settings className="mr-2 h-4 w-4" />
+              <span>Admin Access</span>
+            </Link>
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={logout}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
