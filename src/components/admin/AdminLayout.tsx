@@ -2,7 +2,10 @@
 import { useEffect } from "react";
 import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, Users, Wrench, Palette, Home, LogOut } from "lucide-react";
+import { 
+  ShoppingBag, Users, Wrench, Palette, 
+  Home, LogOut, Star, FileBarChart 
+} from "lucide-react";
 import { shopInfo } from "@/data/services";
 
 const AdminLayout = () => {
@@ -44,12 +47,22 @@ const AdminLayout = () => {
               Dashboard
             </Button>
           </Link>
+          
+          <div className="pt-2 pb-2">
+            <p className="text-xs uppercase text-white/50 font-semibold px-4 py-1">Inventory</p>
+          </div>
+          
           <Link to="/admin/products">
             <Button variant="ghost" className="w-full justify-start text-white hover:bg-lightblue/20">
               <ShoppingBag className="mr-2 h-5 w-5" />
               Products
             </Button>
           </Link>
+          
+          <div className="pt-2 pb-2">
+            <p className="text-xs uppercase text-white/50 font-semibold px-4 py-1">Services</p>
+          </div>
+          
           <Link to="/admin/painters">
             <Button variant="ghost" className="w-full justify-start text-white hover:bg-lightblue/20">
               <Palette className="mr-2 h-5 w-5" />
@@ -62,6 +75,18 @@ const AdminLayout = () => {
               Plumbers
             </Button>
           </Link>
+          
+          <div className="pt-2 pb-2">
+            <p className="text-xs uppercase text-white/50 font-semibold px-4 py-1">Customer Feedback</p>
+          </div>
+          
+          <Link to="/admin/reviews">
+            <Button variant="ghost" className="w-full justify-start text-white hover:bg-lightblue/20">
+              <Star className="mr-2 h-5 w-5" />
+              Reviews
+            </Button>
+          </Link>
+
           <div className="pt-4 mt-4 border-t border-white/20 hidden md:block">
             <Button 
               variant="ghost" 
@@ -75,7 +100,7 @@ const AdminLayout = () => {
         </nav>
 
         <div className="absolute bottom-4 left-4 right-4 text-xs text-white/70 hidden md:block">
-          <p>Admin Panel v1.0</p>
+          <p>Admin Panel v1.1</p>
         </div>
       </aside>
 

@@ -7,11 +7,8 @@ import HowWeHelp from "@/components/home/HowWeHelp";
 import Testimonials from "@/components/home/Testimonials";
 import ProjectStart from "@/components/home/ProjectStart";
 import Categories from "@/components/home/Categories";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
-  const isMobile = useIsMobile();
-  
   useEffect(() => {
     // Set page title
     document.title = "Laxmi Enterprises - Paint and Plumbing Solutions";
@@ -20,9 +17,9 @@ const Index = () => {
   return (
     <div>
       <Hero />
-      <Categories />
-      <HowWeHelp />
+      <Categories key="categories-section" />
       <FeaturedProducts />
+      <HowWeHelp />
       <Services />
       <Testimonials />
       <ProjectStart />
