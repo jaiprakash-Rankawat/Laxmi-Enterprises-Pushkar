@@ -9,11 +9,11 @@ import {
   PaintBucket, 
   Pipette, 
   Wrench, 
-  Shower, 
   Droplet, 
   CircleDashed,
   Bath,
-  Hammer
+  Hammer,
+  Waves  // Replace Shower with Waves
 } from "lucide-react";
 
 // Map category IDs to appropriate icons
@@ -32,7 +32,7 @@ const getCategoryIcon = (categoryId: string) => {
     case "pvc-pipe":
       return <Droplet size={48} />;
     case "bath-fittings":
-      return <Shower size={48} />;
+      return <Waves size={48} />; // Changed from Shower to Waves
     case "sanitary-items":
       return <Bath size={48} />;
     case "gi-fittings":
