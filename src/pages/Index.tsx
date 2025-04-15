@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <div>
       <Hero />
-      <Categories />
+      <Categories key="categories-section" />
       <FeaturedProducts />
       <HowWeHelp />
       <Services />
