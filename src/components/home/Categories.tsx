@@ -1,19 +1,18 @@
-
 import { Link } from "react-router-dom";
 import { categories } from "@/data/products";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { 
-  Box, 
-  ShoppingBag, 
-  PaintBucket, 
-  Pipette, 
-  Wrench, 
-  Droplet, 
+import {
+  Box,
+  ShoppingBag,
+  PaintBucket,
+  Pipette,
+  Wrench,
+  Droplet,
   CircleDashed,
   Bath,
   Hammer,
-  Waves
+  Waves,
 } from "lucide-react";
 
 // Map category IDs to appropriate icons
@@ -47,71 +46,79 @@ const getCategoryIcon = (categoryId: string) => {
 // Generate vibrant gradient backgrounds based on category
 const getCategoryGradient = (index: number) => {
   const gradients = [
+    "from-red-800 to-red-600", // Rose to pink
+    "from-yellow-400 to-yellow-600", // Amber to orange
     "from-violet-600 to-indigo-600", // Rich purple to indigo
-    "from-rose-500 to-pink-600", // Rose to pink
-    "from-amber-500 to-orange-600", // Amber to orange
-    "from-cyan-500 to-blue-600", // Cyan to blue
-    "from-emerald-500 to-teal-600", // Emerald to teal
-    "from-fuchsia-500 to-purple-600", // Fuchsia to purple
+    "from-green-500 to-green-600", // Cyan to blue
+    "from-blue-800 to-blue-900", // Fuchsia to purple
+    "from-gray-800 to-gray-900", // Emerald to teal
     "from-sky-500 to-indigo-600", // Sky to indigo
-    "from-amber-400 to-red-600", // Amber to red
-    "from-lime-400 to-emerald-600", // Lime to emerald
-    "from-blue-500 to-violet-600", // Blue to violet
+    "from-fuchsia-600 to-fuchsia-700", // Amber to red
+    "from-pink-400 to-pink-600", // Lime to emerald
+    "from-yellow-800 to-yellow-900", // Blue to violet
   ];
-  
+
   return gradients[index % gradients.length];
 };
 
 // Generate complementary text colors
 const getTextColor = (index: number) => {
   const textColors = [
-    "text-indigo-50", "text-pink-50", "text-orange-50", 
-    "text-blue-50", "text-teal-50", "text-purple-50",
-    "text-indigo-50", "text-red-50", "text-emerald-50", "text-violet-50"
+    "text-indigo-50",
+    "text-pink-50",
+    "text-orange-50",
+    "text-blue-50",
+    "text-teal-50",
+    "text-purple-50",
+    "text-indigo-50",
+    "text-red-50",
+    "text-emerald-50",
+    "text-violet-50",
   ];
-  
+
   return textColors[index % textColors.length];
 };
 
 const Categories = () => {
   return (
-    <div className="py-16 bg-gradient-to-b from-slate-50 to-slate-100">
+    <div className="py-16 bg-gradient-to-b from-blue-500 to-violet-500">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-indigo-600 font-semibold uppercase tracking-wider bg-indigo-100 px-4 py-1.5 rounded-full shadow-sm"
+            className="text-white font-semibold uppercase tracking-wider bg-gray-900 px-4 py-1.5 rounded-full shadow-sm"
           >
             Explore
           </motion.span>
-          
-          <motion.h2 
+
+          <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-3xl md:text-4xl font-bold mt-3"
           >
-            <span className="bg-gradient-to-r from-violet-600 via-fuchsia-500 to-amber-500 bg-clip-text text-transparent">
+            <span className="text-white bg-clip-text text-transparent">
               Shop by Category
             </span>
           </motion.h2>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ width: 0 }}
             animate={{ width: 150 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mx-auto h-1.5 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-amber-500 rounded-full my-4"
+            className="mx-auto h-1.5 bg-gradient-to-br from-black to-white rounded-full my-4"
           />
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-4 text-gray-600 max-w-2xl mx-auto"
+            className="mt-4 text-gray-700 max-w-2xl mx-auto"
           >
-            Explore our wide range of quality paint and plumbing products by category
+            Explore our wide range of quality paint and plumbing products by
+            category
           </motion.p>
         </div>
 
@@ -121,33 +128,35 @@ const Categories = () => {
               key={category.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: 0.15 * index,
                 type: "spring",
-                stiffness: 100 
+                stiffness: 100,
               }}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 rotateY: 8,
                 z: 20,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
             >
-              <Link 
+              <Link
                 to={`/products/${category.id}`}
                 className="bg-white rounded-xl overflow-hidden transition-all duration-300 flex flex-col group h-full shadow-lg hover:shadow-2xl border border-gray-100"
               >
-                <motion.div 
-                  className={`p-6 flex-1 flex items-center justify-center bg-gradient-to-br ${getCategoryGradient(index)}`}
+                <motion.div
+                  className={`p-6 flex-1 flex items-center justify-center bg-gradient-to-br ${getCategoryGradient(
+                    index
+                  )}`}
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <motion.div 
+                  <motion.div
                     className="bg-white/30 backdrop-blur-md rounded-full p-6 shadow-inner border border-white/40"
-                    whileHover={{ 
+                    whileHover={{
                       rotate: [0, -10, 10, -5, 0],
-                      transition: { duration: 0.5 }
+                      transition: { duration: 0.5 },
                     }}
                   >
                     <div className="text-white drop-shadow-lg">
@@ -155,12 +164,16 @@ const Categories = () => {
                     </div>
                   </motion.div>
                 </motion.div>
-                <div className={`p-4 text-white text-center flex items-center justify-between bg-gradient-to-r ${getCategoryGradient(index)}`}>
-                  <span className="text-sm font-medium">{category.name}</span>
+                <div
+                  className={`p-4 text-white text-center flex items-center justify-between bg-gradient-to-bl ${getCategoryGradient(
+                    index
+                  )}`}
+                >
+                  <span className="text-sm font-medium ">{category.name}</span>
                   <motion.div
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 400 }}
-                    className="rounded-full bg-white/20 p-1"
+                    className="rounded-full bg-black  p-1"
                   >
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </motion.div>
