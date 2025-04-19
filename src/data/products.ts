@@ -1,3 +1,4 @@
+
 import { Product, Category } from "./types";
 import { asianPaintsProducts } from "./categories/asian-paints";
 import { jswPaintsProducts } from "./categories/jsw-paints";
@@ -62,4 +63,8 @@ export const getProductsByCategory = (categoryId: string): Product[] => {
 
 export const getFeaturedProducts = (): Product[] => {
   return products.filter((product) => product.featured);
+};
+
+export const getProductById = (productId: string): Product | undefined => {
+  return products.find((product) => product.id === productId);
 };
