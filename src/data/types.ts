@@ -1,4 +1,3 @@
-
 export interface Product {
   id: string;
   name: string;
@@ -10,6 +9,7 @@ export interface Product {
   inStock?: boolean;
   oldPrice?: number;
   brand?: string;
+  specs?: { label: string; value: string }[];
   sku?: string;
   features?: string[];
   specifications?: Record<string, string | number>;
