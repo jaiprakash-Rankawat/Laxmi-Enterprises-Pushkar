@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { getFeaturedProducts } from "@/data/products";
 import ProductCard from "../products/ProductCard";
@@ -11,16 +10,21 @@ const FeaturedProducts = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="py-16 bg-white">
+    <div
+      className="py-16 bg-orange border-t-2 border-black
+"
+    >
       <div className="container mx-auto px-4">
         <div className="mb-10 flex flex-col md:flex-row justify-between items-center">
           <div>
-            <span className="text-orange font-semibold uppercase tracking-wider bg-orange/10 px-3 py-1 rounded-full">Featured</span>
-            <h2 className="text-3xl font-bold text-navy mt-2">
+            <span className="text-black font-semibold uppercase tracking-wider bg-yellow-500 px-3 py-1 rounded-full">
+              Featured
+            </span>
+            <h2 className="text-3xl font-bold text-white mt-2">
               High-Demand Products
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-navy to-lightblue rounded-full my-4"></div>
-            <p className="mt-2 text-gray-600">
+            <div className="w-24 h-1 bg-black rounded-full my-4"></div>
+            <p className="mt-2 text-gray-800">
               Discover our most popular products
             </p>
           </div>
@@ -30,7 +34,10 @@ const FeaturedProducts = () => {
               className="text-navy border-navy hover:bg-navy hover:text-white flex items-center group"
             >
               View All Products
-              <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={16}
+                className="ml-2 group-hover:translate-x-1 transition-transform"
+              />
             </Button>
           </Link>
         </div>
