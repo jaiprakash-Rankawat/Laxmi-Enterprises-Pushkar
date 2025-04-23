@@ -5,12 +5,18 @@ export const jswPaintsProducts: Product[] = [
     id: "jsw1",
     name: "JSW Paints All Weather Coat",
     category: "jsw-paints",
-    price: 1800,
+    price: 1800, // Default price for compatibility
     image: "/PixaSilk.png",
     description: "Weather-resistant exterior paint",
     featured: true,
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 300 },
+      { size: "4L", price: 1100 },
+      { size: "10L", price: 1800 },
+      { size: "20L", price: 3500 },
+    ]
   },
   {
     id: "jsw2",
@@ -21,6 +27,12 @@ export const jswPaintsProducts: Product[] = [
     description: "Premium interior wall paint",
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 350 },
+      { size: "4L", price: 1200 },
+      { size: "10L", price: 2200 },
+      { size: "20L", price: 4000 },
+    ]
   },
   {
     id: "jsw3",
@@ -31,6 +43,12 @@ export const jswPaintsProducts: Product[] = [
     description: "Exterior paint with anti-dust technology",
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 300 },
+      { size: "4L", price: 1100 },
+      { size: "10L", price: 2000 },
+      { size: "20L", price: 3900 },
+    ]
   },
   {
     id: "jsw4",
@@ -41,6 +59,12 @@ export const jswPaintsProducts: Product[] = [
     description: "Protective coating for wooden surfaces",
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 200 },
+      { size: "4L", price: 700 },
+      { size: "10L", price: 1500 },
+      { size: "20L", price: 2800 },
+    ]
   },
   {
     id: "jsw5",
@@ -51,6 +75,12 @@ export const jswPaintsProducts: Product[] = [
     description: "Stencils for creating decorative paint patterns",
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 100 },
+      { size: "4L", price: 300 },
+      { size: "10L", price: 500 },
+      { size: "20L", price: 900 },
+    ]
   },
   {
     id: "jsw6",
@@ -61,6 +91,12 @@ export const jswPaintsProducts: Product[] = [
     description: "Smooth finish interior emulsion",
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 300 },
+      { size: "4L", price: 900 },
+      { size: "10L", price: 1900 },
+      { size: "20L", price: 3600 },
+    ]
   },
   {
     id: "jsw7",
@@ -71,6 +107,12 @@ export const jswPaintsProducts: Product[] = [
     description: "Eco-friendly interior paint",
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 350 },
+      { size: "4L", price: 1200 },
+      { size: "10L", price: 2300 },
+      { size: "20L", price: 4400 },
+    ]
   },
   {
     id: "jsw8",
@@ -81,6 +123,12 @@ export const jswPaintsProducts: Product[] = [
     description: "Luxury interior emulsion with rich colors",
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 400 },
+      { size: "4L", price: 1300 },
+      { size: "10L", price: 2700 },
+      { size: "20L", price: 5200 },
+    ]
   },
   {
     id: "jsw9",
@@ -91,6 +139,12 @@ export const jswPaintsProducts: Product[] = [
     description: "Anti-bacterial interior paint",
     inStock: true,
     brand: "JSW",
+    variants: [
+      { size: "1L", price: 300 },
+      { size: "4L", price: 1100 },
+      { size: "10L", price: 2100 },
+      { size: "20L", price: 4000 },
+    ]
   },
   {
     id: "jsw10",
