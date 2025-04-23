@@ -5,22 +5,34 @@ export const asianPaintsProducts: Product[] = [
     id: "Ace-Exterior-Emulsion",
     name: "Ace Exterior Emulsion",
     category: "asian-paints",
-    price: 3050,
+    price: 3050, // Default price for compatibility
     image: "/AceExteriorEmulsion.png",
     description: "High-quality emulsion paint from Asian Paints.",
     featured: true,
     inStock: true,
     brand: "Asian Paints",
+    variants: [
+      { size: "1L", price: 350 },
+      { size: "4L", price: 1300 },
+      { size: "10L", price: 3050 },
+      { size: "20L", price: 6000 },
+    ]
   },
   {
     id: "Ace-Sparc-Exterior-Emulsion",
     name: "Ace Sparc Exterior Emulsion",
     category: "asian-paints",
-    price: 2200,
+    price: 2200, // Default price for compatibility
     image: "/AceSparc.png",
     description: "Designer wall paint with special textured effects",
     inStock: true,
     brand: "Asian Paints",
+    variants: [
+      { size: "1L", price: 250 },
+      { size: "4L", price: 900 },
+      { size: "10L", price: 2200 },
+      { size: "20L", price: 4200 },
+    ]
   },
   {
     id: "Ace-Shyne-Exterior-Emulsion",
@@ -31,6 +43,12 @@ export const asianPaintsProducts: Product[] = [
     description: "Economical emulsion paint for interior walls",
     inStock: true,
     brand: "Asian Paints",
+    variants: [
+      { size: "1L", price: 400 },
+      { size: "4L", price: 1400 },
+      { size: "10L", price: 3400 },
+      { size: "20L", price: 6500 },
+    ]
   },
   {
     id: "Ace-Power-Plus-Exterior-Emulsion",
@@ -41,6 +59,12 @@ export const asianPaintsProducts: Product[] = [
     description: "Exterior paint with excellent weather resistance",
     inStock: true,
     brand: "Asian Paints",
+    variants: [
+      { size: "1L", price: 500 },
+      { size: "4L", price: 1600 },
+      { size: "10L", price: 4400 },
+      { size: "20L", price: 8500 },
+    ]
   },
   {
     id: "Apex-Dust-Proof-Exterior-Emulsion",
@@ -51,6 +75,12 @@ export const asianPaintsProducts: Product[] = [
     description: "Durable exterior emulsion paint",
     inStock: true,
     brand: "Asian Paints",
+    variants: [
+      { size: "1L", price: 600 },
+      { size: "4L", price: 1800 },
+      { size: "10L", price: 5000 },
+      { size: "20L", price: 9500 },
+    ]
   },
   {
     id: "Apex-Shyne-Dust-Proof-Exterior-Emulsion",
@@ -61,6 +91,12 @@ export const asianPaintsProducts: Product[] = [
     description: "Ultra-premium interior emulsion paint",
     inStock: true,
     brand: "Asian Paints",
+    variants: [
+      { size: "1L", price: 700 },
+      { size: "4L", price: 2000 },
+      { size: "10L", price: 5100 },
+      { size: "20L", price: 9900 },
+    ]
   },
   {
     id: "Apex-Ultima-Exterior-Emulsion",
@@ -71,6 +107,12 @@ export const asianPaintsProducts: Product[] = [
     description: "High-gloss enamel paint for doors and windows",
     inStock: true,
     brand: "Asian Paints",
+    variants: [
+      { size: "1L", price: 800 },
+      { size: "4L", price: 2500 },
+      { size: "10L", price: 7800 },
+      { size: "20L", price: 15000 },
+    ]
   },
   {
     id: "Royal-Luxuary-Emulsion",
@@ -81,6 +123,12 @@ export const asianPaintsProducts: Product[] = [
     description: "General purpose enamel paint",
     inStock: true,
     brand: "Asian Paints",
+    variants: [
+      { size: "1L", price: 1200 },
+      { size: "4L", price: 3500 },
+      { size: "10L", price: 9600 },
+      { size: "20L", price: 18000 },
+    ]
   },
   {
     id: "Royal-Shyne-Exterior-Emulsion",
@@ -208,6 +256,16 @@ export const asianPaintsProducts: Product[] = [
     category: "asian-paints",
     price: 240,
     image: "/WoodPrimer.png",
+    description: "Economical emulsion paint for interior walls",
+    inStock: true,
+    brand: "Asian Paints",
+  },
+  {
+    id: "Redoxide-Primer",
+    name: "Redoxide Primer",
+    category: "asian-paints",
+    price: 230,
+    image: "/RedOxidePrimer.png",
     description: "Economical emulsion paint for interior walls",
     inStock: true,
     brand: "Asian Paints",

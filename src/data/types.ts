@@ -1,3 +1,10 @@
+export interface ProductVariant {
+  size: string;
+  price: number;
+  sku?: string;
+  inStock?: boolean;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -13,6 +20,7 @@ export interface Product {
   sku?: string;
   features?: string[];
   specifications?: Record<string, string | number>;
+  variants?: ProductVariant[];
 }
 
 export interface Category {
