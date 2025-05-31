@@ -54,7 +54,7 @@ const Categories = () => {
 
         <div className="space-y-12">
           {categories.map((category, categoryIndex) => {
-            const categoryProducts = getProductsByCategory(category.id).slice(0, 4); // Show first 4 products per category
+            const categoryProducts = getProductsByCategory(category.id).slice(0, 5); // Show first 5 products per category
             
             if (categoryProducts.length === 0) return null;
 
@@ -79,7 +79,7 @@ const Categories = () => {
                 </div>
 
                 <div className="p-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                     {categoryProducts.map((product, productIndex) => (
                       <motion.div
                         key={product.id}
